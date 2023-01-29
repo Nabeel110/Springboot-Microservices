@@ -1,0 +1,11 @@
+com/codewithnabeel/productservice/dto/ProductRequest.class
+com/codewithnabeel/productservice/service/ProductService.class
+com/codewithnabeel/productservice/service/ProductServiceImpl.class
+com/codewithnabeel/productservice/model/Product$ProductBuilder.class
+com/codewithnabeel/productservice/dto/ProductResponse.class
+com/codewithnabeel/productservice/dto/ProductRequest$ProductRequestBuilder.class
+com/codewithnabeel/productservice/dto/ProductResponse$ProductResponseBuilder.class
+com/codewithnabeel/productservice/repository/ProductRepository.class
+com/codewithnabeel/productservice/model/Product.class
+com/codewithnabeel/productservice/ProductServiceApplication.class
+com/codewithnabeel/productservice/controller/ProductController.class

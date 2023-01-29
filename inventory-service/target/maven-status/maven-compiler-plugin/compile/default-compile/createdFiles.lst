@@ -1,0 +1,9 @@
+com/codewithnabeel/inventoryservice/dto/InventoryResponse$InventoryResponseBuilder.class
+com/codewithnabeel/inventoryservice/service/InventoryService.class
+com/codewithnabeel/inventoryservice/repository/InventoryRepository.class
+com/codewithnabeel/inventoryservice/model/Inventory$InventoryBuilder.class
+com/codewithnabeel/inventoryservice/service/impl/InventoryServiceImpl.class
+com/codewithnabeel/inventoryservice/controller/InventoryController.class
+com/codewithnabeel/inventoryservice/model/Inventory.class
+com/codewithnabeel/inventoryservice/dto/InventoryResponse.class
+com/codewithnabeel/inventoryservice/InventoryServiceApplication.class

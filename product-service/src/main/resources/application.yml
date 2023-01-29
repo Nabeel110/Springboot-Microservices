@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: PRODUCT-SERVICE
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/product-service
+
+  zipkin:
+    base-url: http://localhost:9411
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+# To get a customized logging patter -> we need to configure this
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"

@@ -1,0 +1,16 @@
+com/codewithnabeel/orderservice/config/WebClientConfig.class
+com/codewithnabeel/orderservice/service/impl/OrderServiceImpl.class
+com/codewithnabeel/orderservice/repository/OrderRepository.class
+com/codewithnabeel/orderservice/dto/InventoryResponse$InventoryResponseBuilder.class
+com/codewithnabeel/orderservice/dto/OrderRequest$OrderRequestBuilder.class
+com/codewithnabeel/orderservice/dto/InventoryResponse.class
+com/codewithnabeel/orderservice/controller/OrderController.class
+com/codewithnabeel/orderservice/dto/OrderRequest.class
+com/codewithnabeel/orderservice/model/Order$OrderBuilder.class
+com/codewithnabeel/orderservice/dto/OrderItemsDto.class
+com/codewithnabeel/orderservice/dto/OrderItemsDto$OrderItemsDtoBuilder.class
+com/codewithnabeel/orderservice/service/OrderService.class
+com/codewithnabeel/orderservice/model/Order.class
+com/codewithnabeel/orderservice/model/OrderItems$OrderItemsBuilder.class
+com/codewithnabeel/orderservice/model/OrderItems.class
+com/codewithnabeel/orderservice/OrderServiceApplication.class

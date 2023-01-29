@@ -1,0 +1,58 @@
+server:
+  port: 9090
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+# enabling logging
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        cloud:
+          gateway:
+            route:
+              RouterDefinitionRouteLocator: INFO
+
+# To get a customized logging patter -> we need to configure this
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+
+# configuring routes in api-gateway
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        # Product Service
+        - id: PRODUCT-SERVICE
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            - Path=/api/product/**
+        # Order Service
+        - id: ORDER-SERVICE
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/api/v1/order/**
+
+  zipkin:
+    base-url: http://localhost:9411
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8181/realms/spring-boot-microservices-realm
+
+# To get a customized logging patter -> we need to configure this
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
