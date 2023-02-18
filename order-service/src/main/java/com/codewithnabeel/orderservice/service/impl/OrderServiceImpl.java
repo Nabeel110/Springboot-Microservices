@@ -3,7 +3,7 @@ package com.codewithnabeel.orderservice.service.impl;
 import com.codewithnabeel.orderservice.dto.InventoryResponse;
 import com.codewithnabeel.orderservice.dto.OrderItemsDto;
 import com.codewithnabeel.orderservice.dto.OrderRequest;
-//import com.codewithnabeel.orderservice.event.OrderPlacedEvent;
+import com.codewithnabeel.orderservice.event.OrderPlacedEvent;
 import com.codewithnabeel.orderservice.model.Order;
 import com.codewithnabeel.orderservice.model.OrderItems;
 import com.codewithnabeel.orderservice.repository.OrderRepository;
@@ -11,8 +11,8 @@ import com.codewithnabeel.orderservice.service.OrderService;
 import io.micrometer.tracing.Span;
 import io.micrometer.tracing.Tracer;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.beans.factory.annotation.Autowired;;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -20,7 +20,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
 
 @Service
 @Slf4j
@@ -33,8 +32,8 @@ public class OrderServiceImpl implements OrderService {
   private WebClient.Builder webClientBuilder;
   @Autowired
   private Tracer tracer;
-//  @Autowired
-//  private KafkaTemplate<String, OrderPlacedEvent> kafkaTemplate;
+  @Autowired
+  private KafkaTemplate<String, OrderPlacedEvent> kafkaTemplate;
 
   @Override
   public String placeOrder(OrderRequest orderRequest) {
@@ -64,7 +63,7 @@ public class OrderServiceImpl implements OrderService {
 
       if (Boolean.TRUE.equals(allProductsInStock)) {
         orderRepository.save(newOrder);
-//        kafkaTemplate.send("notificationTopic", "Order Placed successfully {}", new OrderPlacedEvent(newOrder.getOrderNumber()));
+        kafkaTemplate.send("notificationTopic", "Order Placed successfully {}", new OrderPlacedEvent(newOrder.getOrderNumber()));
         return "Order Placed Successfully";
       } else {
         throw new IllegalArgumentException("Product is not in stock, Please try again later!");

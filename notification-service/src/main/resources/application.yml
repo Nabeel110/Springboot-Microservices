@@ -1,3 +1,43 @@
+server:
+  port: 8183
 spring:
   application:
     name: NOTIFICATION-SERVICE
+
+  # kafka properties
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: notificationId
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: "*"
+
+  #      properties:
+#        json:
+#          type:
+#            mapping: "event:com.codewithnabeel.kafka.OrderPlacedEvent"
+
+  zipkin:
+    base-url: http://localhost:9411
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+# To get a customized logging patter -> we need to configure this
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"

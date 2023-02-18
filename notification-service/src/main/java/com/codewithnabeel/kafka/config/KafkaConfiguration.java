@@ -7,7 +7,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 @Slf4j
 public class KafkaConfiguration {
 
-  @KafkaListener(topics = "notificationTopic")
+  @KafkaListener(topics = "notificationTopic", groupId = "notificationId")
   public void handleNotification(OrderPlacedEvent orderPlacedEvent) {
     // send out an email notification
     log.info("Received notification for order id {}", orderPlacedEvent.getOrderNumber());
