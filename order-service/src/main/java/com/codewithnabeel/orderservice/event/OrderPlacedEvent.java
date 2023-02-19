@@ -1,7 +1,6 @@
 package com.codewithnabeel.orderservice.event;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,6 +8,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class OrderPlacedEvent {
-
   private String orderNumber;
 }

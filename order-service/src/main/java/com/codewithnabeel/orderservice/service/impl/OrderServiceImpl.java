@@ -63,7 +63,7 @@ public class OrderServiceImpl implements OrderService {
 
       if (Boolean.TRUE.equals(allProductsInStock)) {
         orderRepository.save(newOrder);
-        kafkaTemplate.send("notificationTopic", "Order Placed successfully {}", new OrderPlacedEvent(newOrder.getOrderNumber()));
+//        kafkaTemplate.send("notificationTopic", new OrderPlacedEvent(newOrder.getOrderNumber()));
         return "Order Placed Successfully";
       } else {
         throw new IllegalArgumentException("Product is not in stock, Please try again later!");
